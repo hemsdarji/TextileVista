@@ -7,16 +7,6 @@ import Footer from "./component/Footer";
 import "./App.css"
 
 
-// const theme = createTheme({
-//   palette: {
-//     primary: {
-//       main: purple[500],
-//     },
-//     secondary: {
-//       main: green[500],
-//     },
-//   },
-// });
 
 
 const Layout = () => {
