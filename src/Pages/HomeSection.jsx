@@ -1,8 +1,24 @@
 import React from "react";
 import { styled } from "styled-components";
-import { Box, Button, CardMedia, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Grid,
+  ListItem,
+  Typography,
+} from "@mui/material";
 import { Link } from "react-router-dom";
-import { Height } from "@mui/icons-material";
+import { Block } from "@mui/icons-material";
+
+// ----------common style button --------
+const StyledButton = styled(Button)`
+  font-weight: 300;
+  background-color: #65636b;
+`;
 
 const StyledBoxone = styled(Box)`
   align-items: center;
@@ -57,7 +73,7 @@ const StyledImageRow = styled(CardMedia)`
 `;
 
 const StyledGridContainer = styled(Grid)`
-  height: 65vh;
+  minheight: 65vh;
   padding-left: 3vh;
   padding-right: 3vh;
   padding-bottom: 2vh;
@@ -65,7 +81,6 @@ const StyledGridContainer = styled(Grid)`
   @media (max-width: 750px) {
     padding-left: 2vh;
     padding-right: 2vh;
-    height: 40vh;
   }
 `;
 const StyledHeading = styled(Typography)`
@@ -103,60 +118,92 @@ const productData = [
   },
 ];
 
-// three image direction row
+//  -------------------------Featured Collection section  atyled component ------------------------------
 
-const Container = styled.div`
-  height: 100vh;
-`;
-
-const Section = styled.div`
-  height: ${(props) => props.height};
+const StyledBoxDeal = styled(Box)`
   display: flex;
-  flex-direction: ${(props) => props.direction};
-  gap: 5%;
-  padding-left: 10vh;
-  padding-right: 10vh;
-`;
-
-const ProductBox = styled.div`
-  position: relative;
-  background-color: salmon;
-  width: 33%;
-  object-fit: cover;
-`;
-
-const ProductImage = styled.img`
-  object-fit: cover;
   width: 100%;
-  height: 100%;
+  height: 70vh;
+  @media (max-width: 750px) {
+    display: block;
+    height: 20vh;
+  }
 `;
 
-const ProductDetails = styled.div`
-  position: absolute;
-  top: 10%;
-  left: 30%;
+const StyledImageBox = styled(Box)`
+  width: 50%;
+  background-color: red;
+  background-image: url(./public/d1.jpg);
+  background-size: cover;
+  @media (max-width: 750px) {
+    width: 100%;
+  }
+`;
+
+const StyledContentBox = styled(Box)`
+  width: 50%;
+  background-color: #ebecf0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
   align-items: center;
   justify-content: center;
+  gap: 24px;
+  @media (max-width: 750px) {
+    width: 100%;
+    height: 35vh;
+  }
 `;
 
-const products = [
+const StyledTypographyLarge = styled(Typography)`
+  font-size: 8vh;
+`;
+
+const StyledTypographySmall = styled(Typography)`
+  font-size: 4vh;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+`;
+
+const StyledButtonContainer = styled(StyledButton)`
+  text-align: center;
+`;
+
+// ------------------------------------------------------------------------------------------------
+
+// -------------------------------------------------------------------------------------------------
+const SportShoes = [
   {
-    imageSrc: './public/futureproduct1.jpg',
-    title: 'Men Shirt',
-    description: 'Free delivery + Bonus Gift',
+    image: "/public/s1.jpg",
+    alt1: "Sport shoes item 1",
+    title: "Retro Erke Sport Shoes",
+    price: "$ 120.00 $ 100.00",
   },
   {
-    imageSrc: './public/futureproduct2.jpg',
-    title: 'Men Shirt',
-    description: 'Free delivery + Bonus Gift',
+    image: "/public/s2.jpg",
+    alt1: "Sport shoes item 2",
+    title: "Retro Erke Sport Shoes",
+    price: "$ 120.00 $ 100.00",
   },
   {
-    imageSrc: './public/futureproduct3.jpg',
-    title: 'Men Shirt',
-    description: 'Free delivery + Bonus Gift',
+    image: "/public/s3.jpg",
+    alt1: "Sport shoes item 3",
+    title: "Retro Erke Sport Shoes",
+    price: "$ 120.00 $ 100.00",
+  },
+  {
+    image: "/public/s4.jpg",
+    alt1: "Sport shoes item 4",
+    title: "Retro Erke Sport Shoes",
+    price: "$ 120.00 $ 100.00",
+  },
+  {
+    image: "/public/s5.jpg",
+    alt1: "Sport shoes item 5",
+    title: "Retro Erke Sport Shoes",
+    price: "$ 120.00 $ 100.00",
   },
 ];
 
@@ -185,24 +232,20 @@ const HomeSection = () => {
             occasions, and our eco-friendly commitment.
           </StyleTypography>
 
-          <Button
+          <StyledButton
             component={Link}
             to="/product"
-            sx={{
-              fontSize: "1vw",
-              fontWeight: "700",
-              backgroundColor: "#65636b",
-            }}
             variant="contained"
+            fontSize="16px"
           >
             Shop Now
-          </Button>
+          </StyledButton>
         </OverlayText>
       </StyledBoxone>
-
+      {/* ------------------------------------------------------------------------------------------------------------------------------------------------- */}
       <StyledGridContainer container spacing={4}>
         {productData.map((product, index) => (
-          <Grid item xs={3} overflow="hidden" key={index}>
+          <Grid item overflow="hidden" key={index} xs={6} sm={3}>
             <StyledImageRow
               component="img"
               alt={`Image ${index + 1}`}
@@ -220,126 +263,129 @@ const HomeSection = () => {
               <StyledPriceRange variant="span">
                 {product.price}
               </StyledPriceRange>
-              <Button
+
+              <StyledButton
                 component={Link}
                 to="/product"
-                sx={{
-                  fontSize: ".7vw",
-                  fontWeight: "500",
-                  backgroundColor: "#11111b",
-                }}
                 variant="contained"
+                fontSize="16px"
               >
                 Shop Now
-              </Button>
+              </StyledButton>
             </Grid>
           </Grid>
         ))}
       </StyledGridContainer>
+      {/* ------------------------------------------------------------------------------------------------------------------------------------------------ */}
+      <StyledBoxDeal>
+        <StyledImageBox />
+        <StyledContentBox>
+          <StyledTypographyLarge variant="p">
+            Deal of the Day
+          </StyledTypographyLarge>
+          <StyledTypographySmall variant="p">
+            Summer T-Shirts – $35
+          </StyledTypographySmall>
+          <StyledLink to="/product">
+            <StyledButtonContainer>Shop Now</StyledButtonContainer>
+          </StyledLink>
+        </StyledContentBox>
+      </StyledBoxDeal>
+      {/* --------------------------------------------------------------------------------------------------------------------------------------- */}
 
-      <Box display="flex">
-        <Box
+      <Box
+        sx={{
+          height: "30%",
+          alignItems: "center",
+          justifyContent: "center",
+          display: "flex",
+          flexDirection: "column",
+          gap: "16px",
+          paddingTop: "112px",
+          paddingBottom: "40px",
+          letterSpacing: "3px",
+        }}
+      >
+        <Typography fontSize="5vh">Featured Collection</Typography>
+        <Typography fontSize="2vh">
+          We collaborate with smart and creative people
+        </Typography>
+      </Box>
+
+      {/* -----------------------------------------------------Featured Collection section -start--------------------------------------- */}
+
+      {/* <Box
           sx={{
-            width: "50%",
-            height: "70vh",
-            backgroundColor: "red",
-            backgroundImage: "url(./public/d1.jpg)",
-            backgroundSize: "cover",
-          }}
-        ></Box>
-        <Box
-          sx={{
-            width: "50%",
-            height: "70vh",
-            backgroundColor: "#EBECF0",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "24px",
+            height: "70%",
+            width :"100%",
+           
           }}
         >
-          <Typography variant="p" sx={{ fontSize: "8vh" }}>
-            Deal of the Day
-          </Typography>
-          <Typography variant="p" sx={{ fontSize: "4vh" }}>
-            Summer T-Shirts – $35
-          </Typography>
-          <Button
-            component={Link}
-            to="/product"
-            sx={{
-              fontSize: "1vw",
-              fontWeight: "700",
-              backgroundColor: "#65636b",
-            }}
-            variant="contained"
-          >
-            Shop Now
-          </Button>
-        </Box>
-      </Box>
-{/* 
-      <Box sx={{height:"100vh"}}>
-         <Box sx={{height:"30vh",alignItems:"center",justifyContent:"center",display:"flex",flexDirection:"column",gap:"16px",paddingTop:"112px",paddingBottom:"40px",letterSpacing:"3px",}}>
-          <Typography variant="p" sx={{fontSize:"5vh"}}>Featured Collection</Typography>
-          <Typography variant="span" sx={{fontSize:"2vh"}}>We collaborate with smart and creative people</Typography>
-         </Box>
-         <Box sx={{height:"70vh",display:"flex",flexDirection:"row",gap:"5%",paddingLeft:"10vh",paddingRight:"10vh"}}>
-          <Box sx={{backgroundColor:"salmon",width:"33%",objectFit:"cover",position:"relative"}} >
-            <Box sx={{objectFit:"cover",backgroundSize:"cover"}}>
-            <img src="./public/futureproduct1.jpg" alt="future product 1" style={{ objectFit: "cover", width: "100%", height: "100%" }} />
-            </Box>
-            <Box sx={{position:"absolute",top:"10%",left:"30%",display:"flex",flexDirection:"column",gap:"16px",alignItems:"center",justifyContent:"center"}}>
-                <Typography sx={{fontSize:"40px"}} variant="p">Men Shirt</Typography>
-                <Typography sx={{fontSize:"20px"}} variant="p">Free delivery + Bonus Gift</Typography>
-                <Button
-            component={Link}
-            to="/product"
-            sx={{
-              fontSize: "1vw",
-              fontWeight: "700",
-              backgroundColor: "#65636b",
-            }}
-            variant="contained"
-          >
-            Shop Now
-          </Button>
-               
-            </Box>
-          </Box>
-         </Box>
-      </Box> */}
-          <Container>
-          <Box sx={{height:"30vh",alignItems:"center",justifyContent:"center",display:"flex",flexDirection:"column",gap:"16px",paddingTop:"112px",paddingBottom:"40px",letterSpacing:"3px",}}>
-        <Typography fontSize="5vh">Featured Collection</Typography>
-        <Typography fontSize="2vh">We collaborate with smart and creative people</Typography>
-      </Box>
-      <Section height="70vh" direction="row">
-        {products.map((product, index) => (
-          <ProductBox key={index}>
-            <ProductImage src={product.imageSrc} alt={`future product ${index + 1}`} />
-            <ProductDetails>
-              <Typography fontSize="40px">{product.title}</Typography>
-              <Typography fontSize="20px">{product.description}</Typography>
-              <Button
-            component={Link}
-            to="/product"
-            sx={{
-              fontSize: "16px",
-              fontWeight: "400",
-              backgroundColor: "#65636b",
-            }}
-            variant="contained"
-          >
-            Shop Now
-          </Button>
-            </ProductDetails>
-          </ProductBox>
-        ))}
-      </Section>
-    </Container>
+          {products.map((product, index) => (
+            <ProductBox key={index} >
+              <ProductImage
+                src={product.imageSrc}
+                alt={`future product ${index + 1}`}
+              />
+              <ProductDetails>
+                <Typography fontSize="40px">{product.title}</Typography>
+                <Typography fontSize="20px">{product.description}</Typography>
 
+                <StyledButton
+                  component={Link}
+                  to="/product"
+                  variant="contained"
+                >
+                  Shop Now
+                </StyledButton>
+
+              </ProductDetails>
+            </ProductBox>
+          ))}
+        </Box>
+      </Container> */}
+
+      {/* -----------------------------------------------------Featured Collection section end---------------------------------------- */}
+
+      {/* -------------------------------------------------------------- shoes section start----------------------------------------------------------- */}
+
+      <Box
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "8vh",
+          paddingTop: "6vh",
+          paddingBottom: "6vh",
+          paddingLeft: "6vh",
+          paddingRight: "6vh",
+        }}
+      >
+        {SportShoes.map((shoes, index) => (
+          <Card sx={{ maxWidth: 500 }}>
+            <CardMedia
+              component="img"
+              height="300"
+              image={shoes.image}
+              alt={shoes.alt1}
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                {shoes.title}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {shoes.price}
+              </Typography>
+            </CardContent>
+            <CardActions
+              sx={{ display: "flex", justifyContent: "space-between" }}
+            >
+              <Button size="small">Share</Button>
+              <Button size="small">Add to cart</Button>
+            </CardActions>
+          </Card>
+        ))}
+      </Box>
+      {/* -------------------------------------------------------------- shoes section end ----------------------------------------------------------- */}
     </Box>
   );
 };
