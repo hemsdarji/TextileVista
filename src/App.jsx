@@ -4,21 +4,22 @@ import Product from "./Pages/Product";
 import HomeSection from "./Pages/HomeSection";
 import Navbar from "./component/Navbar";
 import Footer from "./component/Footer";
-import "./App.css"
+import "./App.css";
 
 
 
 
 const Layout = () => {
   return (
-    <>
+ <>
       <Navbar />
       <Routes>
         <Route path="/" element={<HomeSection />} />
         <Route path="/Product" element={<Product />} />
       </Routes>
       <Footer />
-    </>
+      </>
+  
   );
 };
 

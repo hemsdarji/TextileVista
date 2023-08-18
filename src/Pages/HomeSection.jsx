@@ -8,13 +8,14 @@ import {
   CardContent,
   CardMedia,
   Grid,
-  ListItem,
   Typography,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import { Block } from "@mui/icons-material";
+
+
 
 // ----------common style button --------
+
 const StyledButton = styled(Button)`
   font-weight: 300;
   background-color: #65636b;
@@ -43,8 +44,8 @@ const OverlayText = styled.div`
   left: 10%;
   width: 40%;
   @media (max-width: 750px) {
-    top: 0%;
-    left: 5%;
+    top: 20%;
+    left: 10%;
     padding: 0.3rem;
   }
 `;
@@ -59,6 +60,9 @@ const StyleTypography = styled(Typography)`
   paddingtop: 20px;
   paddingbottom: 20px;
   fontsize: 1vw;
+  @media (max-width: 750px) {
+    display : none ;
+  }
 `;
 
 const StyledImageRow = styled(CardMedia)`
@@ -97,81 +101,36 @@ const StyledPriceRange = styled(Typography)`
 
 const productData = [
   {
+    id:0,
     imageSrc: "./public/A3.jpg",
     name: "Blue Levi Shirt",
     price: "$10.00",
+    alt : "product 1"
   },
   {
+    id:1,
     imageSrc: "./public/A6.jpg",
     name: "Pink Robe",
     price: "$4-$10",
+    alt : "product 2"
   },
   {
+    id:2,
     imageSrc: "./public/A4.jpg",
     name: "Women Robe",
     price: "$4-$10",
+    alt : "product 3"
   },
   {
+    id:3,
     imageSrc: "./public/A2.jpg",
     name: "Carousel Jacket",
     price: "$4-$10",
+    alt : "product 4"
   },
 ];
 
-//  -------------------------Featured Collection section  atyled component ------------------------------
 
-const StyledBoxDeal = styled(Box)`
-  display: flex;
-  width: 100%;
-  height: 70vh;
-  @media (max-width: 750px) {
-    display: block;
-    height: 20vh;
-  }
-`;
-
-const StyledImageBox = styled(Box)`
-  width: 50%;
-  background-color: red;
-  background-image: url(./public/d1.jpg);
-  background-size: cover;
-  @media (max-width: 750px) {
-    width: 100%;
-  }
-`;
-
-const StyledContentBox = styled(Box)`
-  width: 50%;
-  background-color: #ebecf0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  @media (max-width: 750px) {
-    width: 100%;
-    height: 35vh;
-  }
-`;
-
-const StyledTypographyLarge = styled(Typography)`
-  font-size: 8vh;
-`;
-
-const StyledTypographySmall = styled(Typography)`
-  font-size: 4vh;
-`;
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: inherit;
-`;
-
-const StyledButtonContainer = styled(StyledButton)`
-  text-align: center;
-`;
-
-// ------------------------------------------------------------------------------------------------
 
 // -------------------------------------------------------------------------------------------------
 const SportShoes = [
@@ -207,6 +166,71 @@ const SportShoes = [
   },
 ];
 
+// -----------------container title for new product (jacket or demin coat)----------------------
+
+const Containertitle = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  padding-left: 20%;
+  padding-right :20%;
+  background-color: #e3e3de;
+  @media (max-width: 750px) {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+const ContentBox = styled.div`
+  height: 80vh;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 4vh;
+  gap: 16px;
+  @media (max-width: 750px) {
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    height: 20vh;
+  }
+ 
+ 
+`;
+
+const Title = styled.span`
+  font-size: 13vh;
+  letterspacing :"2px";
+  @media (max-width: 750px) {
+    font-size: 6vh;
+  }
+`;
+
+const ImageBox = styled.div`
+  height: 80vh;
+  width: 50%;
+  padding-top: 10vh;
+  @media (max-width: 750px) {
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    padding-top: 10vh;
+    height: 45vh;
+  }
+ 
+`;
+
+const Image = styled.img`
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+ 
+`;
+
+
 const HomeSection = () => {
   return (
     <Box>
@@ -214,11 +238,9 @@ const HomeSection = () => {
         <StyledImage src="./public/header-media-bg.jpg" alt="image" />
         <OverlayText>
           <Typography variant="h5" style={responsiveText}>
-            Special Offers
+           New Collection
           </Typography>
-          <Typography variant="h5" style={responsiveText}>
-            Just For You
-          </Typography>
+  
           <StyleTypography
             variant="body1"
             sx={{
@@ -244,11 +266,11 @@ const HomeSection = () => {
       </StyledBoxone>
       {/* ------------------------------------------------------------------------------------------------------------------------------------------------- */}
       <StyledGridContainer container spacing={4}>
-        {productData.map((product, index) => (
-          <Grid item overflow="hidden" key={index} xs={6} sm={3}>
+        {productData.map(product => (
+          <Grid item overflow="hidden" key={product.id} xs={6} sm={3}>
             <StyledImageRow
               component="img"
-              alt={`Image ${index + 1}`}
+              alt={`Image ${product.alt}`}
               src={product.imageSrc}
             />
             <Grid
@@ -276,76 +298,21 @@ const HomeSection = () => {
           </Grid>
         ))}
       </StyledGridContainer>
+     
       {/* ------------------------------------------------------------------------------------------------------------------------------------------------ */}
-      <StyledBoxDeal>
-        <StyledImageBox />
-        <StyledContentBox>
-          <StyledTypographyLarge variant="p">
-            Deal of the Day
-          </StyledTypographyLarge>
-          <StyledTypographySmall variant="p">
-            Summer T-Shirts – $35
-          </StyledTypographySmall>
-          <StyledLink to="/product">
-            <StyledButtonContainer>Shop Now</StyledButtonContainer>
-          </StyledLink>
-        </StyledContentBox>
-      </StyledBoxDeal>
-      {/* --------------------------------------------------------------------------------------------------------------------------------------- */}
 
-      <Box
-        sx={{
-          height: "30%",
-          alignItems: "center",
-          justifyContent: "center",
-          display: "flex",
-          flexDirection: "column",
-          gap: "16px",
-          paddingTop: "112px",
-          paddingBottom: "40px",
-          letterSpacing: "3px",
-        }}
-      >
-        <Typography fontSize="5vh">Featured Collection</Typography>
-        <Typography fontSize="2vh">
-          We collaborate with smart and creative people
-        </Typography>
-      </Box>
-
-      {/* -----------------------------------------------------Featured Collection section -start--------------------------------------- */}
-
-      {/* <Box
-          sx={{
-            height: "70%",
-            width :"100%",
-           
-          }}
-        >
-          {products.map((product, index) => (
-            <ProductBox key={index} >
-              <ProductImage
-                src={product.imageSrc}
-                alt={`future product ${index + 1}`}
-              />
-              <ProductDetails>
-                <Typography fontSize="40px">{product.title}</Typography>
-                <Typography fontSize="20px">{product.description}</Typography>
-
-                <StyledButton
-                  component={Link}
-                  to="/product"
-                  variant="contained"
-                >
-                  Shop Now
-                </StyledButton>
-
-              </ProductDetails>
-            </ProductBox>
-          ))}
-        </Box>
-      </Container> */}
-
-      {/* -----------------------------------------------------Featured Collection section end---------------------------------------- */}
+       <Containertitle>
+       <ImageBox>
+      <Image src="./public/jecket1.jpg" alt="change pic" />
+    </ImageBox>
+    <ContentBox>
+      <span>#NEW SUMMER COLLECTION 2023</span>
+      <Title>JACKET</Title>
+      <Button variant="contained">Shop Now</Button>
+    </ContentBox>
+  </Containertitle>
+      
+     
 
       {/* -------------------------------------------------------------- shoes section start----------------------------------------------------------- */}
 
@@ -360,8 +327,8 @@ const HomeSection = () => {
           paddingRight: "6vh",
         }}
       >
-        {SportShoes.map((shoes, index) => (
-          <Card sx={{ maxWidth: 500 }}>
+        {SportShoes.map((shoes , index)=> (
+          <Card sx={{ maxWidth: 500 }} key={index}>
             <CardMedia
               component="img"
               height="300"
@@ -386,7 +353,22 @@ const HomeSection = () => {
         ))}
       </Box>
       {/* -------------------------------------------------------------- shoes section end ----------------------------------------------------------- */}
-    </Box>
+
+    {/* ------------------------------------------------ section for jacket and demin coat title start------------------------------------ */}
+
+     <Containertitle>
+    <ContentBox>
+      <span>#NEW SUMMER COLLECTION 2023</span>
+      <Title>DENIM COAT</Title>
+      <Button variant="contained">Shop Now</Button>
+    </ContentBox>
+    <ImageBox>
+      <Image src="./public/denim.jpg" alt="change pic" />
+    </ImageBox>
+  </Containertitle>
+  {/* ------------------------------------------------ section for jacket and demin coat title end------------------------------------ */}
+
+  </Box>
   );
 };
 
