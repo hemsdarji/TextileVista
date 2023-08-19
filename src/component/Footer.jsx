@@ -1,46 +1,78 @@
+import { Box, Typography } from '@mui/material';
 import React from 'react';
 import styled from 'styled-components';
 
-// Styled Footer Component
 const FooterContainer = styled.footer`
   background-color: #333;
   color: #fff;
   padding: 20px;
-  text-align: center;
+
+  @media (max-width: 768px) {
+    padding: 20px 10px;
+  }
 `;
 
 const FooterBlock = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 10px;
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 10px;
+  }
 `;
 
 const FooterLink = styled.a`
   color: #fff;
   text-decoration: none;
+  transition: color 0.3s;
 
   &:hover {
-    text-decoration: underline;
+    color: #f4b400;
   }
 `;
 
 const Footer = () => {
   return (
     <FooterContainer>
-      <FooterBlock>
-        <FooterLink href="#">Link 1</FooterLink>
-        <FooterLink href="#">Link 2</FooterLink>
-        <FooterLink href="#">Link 3</FooterLink>
-        <FooterLink href="#">Link 4</FooterLink>
-      </FooterBlock>
-      <FooterBlock>
-        <FooterLink href="#">Link 5</FooterLink>
-        <FooterLink href="#">Link 6</FooterLink>
-        <FooterLink href="#">Link 7</FooterLink>
-        <FooterLink href="#">Link 8</FooterLink>
-      </FooterBlock>
-      {/* Add more blocks as needed */}
-      <p>&copy; 2023 Your Website. All rights reserved.</p>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: { xs: 'column', md: 'row' },
+          justifyContent: 'center',
+          gap: { xs: '20px', md: '60px' },
+        }}
+      >
+        <FooterBlock>
+          <Typography variant="h6">Get to Know Us</Typography>
+          <FooterLink href="#">About Us</FooterLink>
+          <FooterLink href="#">Careers</FooterLink>
+          <FooterLink href="#">Press Releases</FooterLink>
+          <FooterLink href="#">Amazon Science</FooterLink>
+        </FooterBlock>
+        <FooterBlock>
+          <Typography variant="h6">Connect with Us</Typography>
+          <FooterLink href="#">Facebook</FooterLink>
+          <FooterLink href="#">Twitter</FooterLink>
+          <FooterLink href="#">Instagram</FooterLink>
+        </FooterBlock>
+        <FooterBlock>
+          <Typography variant="h6">Let Us Help You</Typography>
+          <FooterLink href="#">Your Account</FooterLink>
+          <FooterLink href="#">Returns Centre</FooterLink>
+          <FooterLink href="#">100% Purchase Protection</FooterLink>
+          <FooterLink href="#">Help</FooterLink>
+        </FooterBlock>
+      </Box>
+
+      <Typography
+        variant="body2"
+        align="center"
+        sx={{ marginTop: '20px', fontSize: '0.8rem' }}
+      >
+        &copy;2023 TextileVista. All rights reserved.
+      </Typography>
     </FooterContainer>
   );
 };

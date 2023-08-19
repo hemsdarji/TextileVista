@@ -17,6 +17,7 @@ const StyledNavbar = styled("div")({
 const ButtonContainer = styled("div")({
   display: "flex",
   gap: "1rem",
+
 });
 
 const iconComponents = [
@@ -36,6 +37,7 @@ const Navbar = () => {
           alignItems: "center",
           display: "flex",
           fontSize: "1vw",
+          paddingTop:"16px"
         }}
         variant="h6"
       >
@@ -63,6 +65,8 @@ const Navbar = () => {
               textTransform: "uppercase",
               letterSpacing: "2px",
               fontSize: "2vw",
+              fontWeight:"700",
+              letterSpacing:"3px"
             }}
             variant="h4"
           >
