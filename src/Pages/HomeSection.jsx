@@ -102,28 +102,28 @@ const StyledPriceRange = styled(Typography)`
 const productData = [
   {
     id:0,
-    imageSrc: "./public/A3.jpg",
+    imageSrc: "./img/A3.jpg",
     name: "Blue Levi Shirt",
     price: "$10.00",
     alt : "product 1"
   },
   {
     id:1,
-    imageSrc: "./public/A6.jpg",
+    imageSrc: "./img/A6.jpg",
     name: "Pink Robe",
     price: "$4-$10",
     alt : "product 2"
   },
   {
     id:2,
-    imageSrc: "./public/A4.jpg",
+    imageSrc: "./img/A4.jpg",
     name: "Women Robe",
     price: "$4-$10",
     alt : "product 3"
   },
   {
     id:3,
-    imageSrc: "./public/A2.jpg",
+    imageSrc: "./img/A2.jpg",
     name: "Carousel Jacket",
     price: "$4-$10",
     alt : "product 4"
@@ -135,31 +135,31 @@ const productData = [
 // -------------------------------------------------------------------------------------------------
 const SportShoes = [
   {
-    image: "/public/s1.jpg",
+    image: "/img/s1.jpg",
     alt1: "Sport shoes item 1",
     title: "Retro Erke Sport Shoes",
     price: "$ 120.00 $ 100.00",
   },
   {
-    image: "/public/s2.jpg",
+    image: "/img/s2.jpg",
     alt1: "Sport shoes item 2",
     title: "Retro Erke Sport Shoes",
     price: "$ 120.00 $ 100.00",
   },
   {
-    image: "/public/s3.jpg",
+    image: "/img/s3.jpg",
     alt1: "Sport shoes item 3",
     title: "Retro Erke Sport Shoes",
     price: "$ 120.00 $ 100.00",
   },
   {
-    image: "/public/s4.jpg",
+    image: "/img/s4.jpg",
     alt1: "Sport shoes item 4",
     title: "Retro Erke Sport Shoes",
     price: "$ 120.00 $ 100.00",
   },
   {
-    image: "/public/s5.jpg",
+    image: "/img/s5.jpg",
     alt1: "Sport shoes item 5",
     title: "Retro Erke Sport Shoes",
     price: "$ 120.00 $ 100.00",
@@ -235,7 +235,7 @@ const HomeSection = () => {
   return (
     <Box>
       <StyledBoxone>
-        <StyledImage src="./public/header-media-bg.jpg" alt="image" />
+        <StyledImage src="./img/header-media-bg.jpg" alt="image" />
         <OverlayText>
           <Typography variant="h5" style={responsiveText}>
            New Collection
@@ -303,7 +303,7 @@ const HomeSection = () => {
 
        <Containertitle>
        <ImageBox>
-      <Image src="./public/jecket1.jpg" alt="change pic" />
+      <Image src="./img/jecket1.jpg" alt="change pic" />
     </ImageBox>
     <ContentBox>
       <span>#NEW SUMMER COLLECTION 2023</span>
@@ -363,7 +363,7 @@ const HomeSection = () => {
       <Button variant="contained">Shop Now</Button>
     </ContentBox>
     <ImageBox>
-      <Image src="./public/denim.jpg" alt="change pic" />
+      <Image src="./img/denim.jpg" alt="change pic" />
     </ImageBox>
   </Containertitle>
   {/* ------------------------------------------------ section for jacket and demin coat title end------------------------------------ */}
