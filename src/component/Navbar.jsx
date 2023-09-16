@@ -1,8 +1,6 @@
-// import { Mail, Notifications, ShoppingCart } from "@mui/icons-material";
-import { ShoppingCart } from "@mui/icons-material";
-import { Badge, Box, Button, Typography } from "@mui/material";
+
+import {  Box, Button, Typography } from "@mui/material";
 import React from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 import CartData from "../Pages/CartData";
@@ -12,8 +10,8 @@ const StyledNavbar = styled("div")({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  padding: "16px 32px",
-  width: "100%", // Make sure the navbar spans the full width,
+  padding: "16px 16px",
+  width: "100%", 
 });
 
 const ButtonContainer= styled.div`
@@ -21,7 +19,9 @@ display: flex;
 gap : 1rem;
 
   @media (max-width: 750px) {
-    display: none;
+     display : none;
+    flex-direction: column; 
+    align-items: center; 
   }
 `;
 
@@ -36,7 +36,7 @@ const Navbar = () => {
           justifyContent: "center",
           alignItems: "center",
           display: "flex",
-          fontSize: "1vw",
+          fontSize: "1.5vh",
           paddingTop: "16px",
         }}
         variant="h6"
@@ -55,18 +55,21 @@ const Navbar = () => {
           </Button>
         </ButtonContainer>
         <Box>
-          <Typography
+          <Button
+          component={Link} to="/" 
             sx={{
               textTransform: "uppercase",
               letterSpacing: "2px",
-              fontSize: "32px",
+              fontSize: "3vh",
               fontWeight: "700",
               letterSpacing: "3px",
+              textDecoration:"none",
+              color:"black"
             }}
-            variant="h4"
+         
           >
             Textile Vista
-          </Typography>
+          </Button>
         </Box>
 
         {/* <ButtonContainer>

@@ -1,57 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import styled from 'styled-components';
-import { Container, Typography, Card, CardContent, CardMedia, Button } from '@mui/material';
-import { useDispatch } from 'react-redux';
-import { add } from '../store/productSlice';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import {
+  Container,
+  Typography,
+  Card,
+  CardContent,
+  CardMedia,
+  Button,
+  Box,
+  CardActions,
+} from "@mui/material";
+import { useDispatch } from "react-redux";
+import { add } from "../store/productSlice";
 
- const ProductList = styled.div`
-  display: flex;
-  gap:24px;
-  flex-wrap: wrap;
-  justify-content: space-between;
-
-  @media (max-width: 900px) {
-    justify-content: center;
-  }
-`;
-
-const ProductCard = styled(Card)`
-  width: calc(30% - 13vh);
-  margin-bottom: 4vh;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-
-  @media (max-width: 1200px) {
-    width: calc(50% - 20px);
-  }
-
-  @media (max-width: 900px) {
-    width: calc(100% - 20px);
-  }
-`;
-
-const ProductCardContent = styled(CardContent)`
-  flex-grow: 1;
-`;
-
-const AddToCartButton = styled(Button)`
-  margin-top: auto;
-`;
-
-const ProductComponent =() => {
-
+const ProductComponent = () => {
   const dispatch = useDispatch();
   const [productData, setProductData] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get('https://fakestoreapi.com/products')
-      .then(response => {
+    axios
+      .get("https://fakestoreapi.com/products")
+      .then((response) => {
         setProductData(response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         setError(error);
       });
   }, []);
@@ -62,34 +35,68 @@ const ProductComponent =() => {
 
   const handleAdd = (product) => {
     dispatch(add(product));
-  }
+  };
 
   return (
     <Container>
       <Typography variant="h4" gutterBottom>
         Products
       </Typography>
-      <ProductList>
-        {productData.map(product => (
-          <ProductCard key={product.id}>
+      <Box
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "8vh",
+        }}
+      >
+        {productData.map((product) => (
+          <Card
+            sx={{
+              maxWidth: 200,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              marginLeft: "auto",
+              marginRight:"auto",
+            }}
+            key={product.id}
+          >
             <CardMedia
               component="img"
               alt={product.title}
               height="200"
               image={product.image}
             />
-            <ProductCardContent>
-              <Typography variant="h6">{product.title}</Typography>
-              <Typography variant="span" color="textSecondary">
-                Price: ${product.price}
+            <CardContent>
+              <Typography
+                sx={{ width: "20vh", height: "20vh" }}
+                gutterBottom
+                variant="h5"
+                component="div"
+              >
+                {product.title}
               </Typography>
-            </ProductCardContent>
-            <AddToCartButton onClick={() => handleAdd(product)} variant="contained">Add to cart</AddToCartButton>
-          </ProductCard>
+
+              <Typography>{product.price}</Typography>
+            </CardContent>
+
+            <CardActions
+              sx={{ display: "flex", justifyContent: "space-between" }}
+            >
+              <Button
+                variant="contained"
+                onClick={() => handleAdd(product)}
+                size="small"
+              >
+                Add to cart
+              </Button>
+            </CardActions>
+          </Card>
         ))}
-      </ProductList>
+      </Box>
     </Container>
   );
-}
+};
 
 export default ProductComponent;

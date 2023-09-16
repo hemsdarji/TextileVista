@@ -29,7 +29,7 @@ const FooterLink = styled.a`
   transition: color 0.3s;
 
   &:hover {
-    color: #f4b400;
+    color: #0000ff;
   }
 `;
 
@@ -39,26 +39,27 @@ const Footer = () => {
       <Box
         sx={{
           display: 'flex',
+          letterSpacing:'1px',
           flexDirection: { xs: 'column', md: 'row' },
           justifyContent: 'center',
-          gap: { xs: '20px', md: '60px' },
+          gap: { xs: '20px', md: '30vh' },
         }}
       >
         <FooterBlock>
-          <Typography variant="h6">Get to Know Us</Typography>
+          <Typography variant="h5">Get to Know Us</Typography>
           <FooterLink href="#">About Us</FooterLink>
           <FooterLink href="#">Careers</FooterLink>
           <FooterLink href="#">Press Releases</FooterLink>
           <FooterLink href="#">Amazon Science</FooterLink>
         </FooterBlock>
         <FooterBlock>
-          <Typography variant="h6">Connect with Us</Typography>
+          <Typography variant="h5">Connect with Us</Typography>
           <FooterLink href="#">Facebook</FooterLink>
           <FooterLink href="#">Twitter</FooterLink>
           <FooterLink href="#">Instagram</FooterLink>
         </FooterBlock>
         <FooterBlock>
-          <Typography variant="h6">Let Us Help You</Typography>
+          <Typography variant="h5">Let Us Help You</Typography>
           <FooterLink href="#">Your Account</FooterLink>
           <FooterLink href="#">Returns Centre</FooterLink>
           <FooterLink href="#">100% Purchase Protection</FooterLink>
@@ -69,7 +70,7 @@ const Footer = () => {
       <Typography
         variant="body2"
         align="center"
-        sx={{ marginTop: '20px', fontSize: '0.8rem' }}
+        sx={{ marginTop: '24px', fontSize: '0.9rem',letterSpacing:'2px' }}
       >
         &copy;2023 TextileVista. All rights reserved.
       </Typography>
