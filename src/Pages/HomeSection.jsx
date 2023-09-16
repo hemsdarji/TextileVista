@@ -11,6 +11,8 @@ import {
   Typography,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import { SportShoes } from "../Data";
+import { productData } from "../Data";
 
 
 
@@ -18,8 +20,9 @@ import { Link } from "react-router-dom";
 
 const StyledButton = styled(Button)`
   font-weight: 300;
-  background-color: #65636b;
+  background-color: #fff;
 `;
+//----------------------------------
 
 const StyledBoxone = styled(Box)`
   align-items: center;
@@ -40,7 +43,7 @@ const StyledImage = styled.img`
 const OverlayText = styled.div`
   position: absolute;
   padding: 1rem;
-  top: 10%;
+  top: 22%;
   left: 10%;
   width: 40%;
   @media (max-width: 750px) {
@@ -99,73 +102,6 @@ const StyledPriceRange = styled(Typography)`
   font-size: 1rem;
 `;
 
-const productData = [
-  {
-    id:0,
-    imageSrc: "./img/A3.jpg",
-    name: "Blue Levi Shirt",
-    price: "$10.00",
-    alt : "product 1"
-  },
-  {
-    id:1,
-    imageSrc: "./img/A6.jpg",
-    name: "Pink Robe",
-    price: "$4-$10",
-    alt : "product 2"
-  },
-  {
-    id:2,
-    imageSrc: "./img/A4.jpg",
-    name: "Women Robe",
-    price: "$4-$10",
-    alt : "product 3"
-  },
-  {
-    id:3,
-    imageSrc: "./img/A2.jpg",
-    name: "Carousel Jacket",
-    price: "$4-$10",
-    alt : "product 4"
-  },
-];
-
-
-
-// -------------------------------------------------------------------------------------------------
-const SportShoes = [
-  {
-    image: "/img/s1.jpg",
-    alt1: "Sport shoes item 1",
-    title: "Retro Erke Sport Shoes",
-    price: "$ 120.00 $ 100.00",
-  },
-  {
-    image: "/img/s2.jpg",
-    alt1: "Sport shoes item 2",
-    title: "Retro Erke Sport Shoes",
-    price: "$ 120.00 $ 100.00",
-  },
-  {
-    image: "/img/s3.jpg",
-    alt1: "Sport shoes item 3",
-    title: "Retro Erke Sport Shoes",
-    price: "$ 120.00 $ 100.00",
-  },
-  {
-    image: "/img/s4.jpg",
-    alt1: "Sport shoes item 4",
-    title: "Retro Erke Sport Shoes",
-    price: "$ 120.00 $ 100.00",
-  },
-  {
-    image: "/img/s5.jpg",
-    alt1: "Sport shoes item 5",
-    title: "Retro Erke Sport Shoes",
-    price: "$ 120.00 $ 100.00",
-  },
-];
-
 // -----------------container title for new product (jacket or demin coat)----------------------
 
 const Containertitle = styled.div`
@@ -195,14 +131,15 @@ const ContentBox = styled.div`
     align-items: center;
     justify-content: center;
     width:100%;
-    height: 20vh;
+    height: 27vh;
+    padding-top: 1vh;
   }
  
  
 `;
 
 const Title = styled.span`
-  font-size: 13vh;
+  font-size: 9vh;
   letterspacing :"2px";
   @media (max-width: 750px) {
     font-size: 6vh;

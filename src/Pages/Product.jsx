@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { Container, Typography, Card, CardContent, CardMedia, Button } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { add } from '../store/productSlice';
 
-const ProductList = styled.div`
+ const ProductList = styled.div`
   display: flex;
-  gap:32px;
+  gap:24px;
   flex-wrap: wrap;
   justify-content: space-between;
 
@@ -15,8 +17,8 @@ const ProductList = styled.div`
 `;
 
 const ProductCard = styled(Card)`
-  width: calc(20% - 20px);
-  margin-bottom: 20px;
+  width: calc(30% - 13vh);
+  margin-bottom: 4vh;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -39,6 +41,8 @@ const AddToCartButton = styled(Button)`
 `;
 
 const ProductComponent =() => {
+
+  const dispatch = useDispatch();
   const [productData, setProductData] = useState([]);
   const [error, setError] = useState(null);
 
@@ -56,6 +60,10 @@ const ProductComponent =() => {
     return <div>Error: {error.message}</div>;
   }
 
+  const handleAdd = (product) => {
+    dispatch(add(product));
+  }
+
   return (
     <Container>
       <Typography variant="h4" gutterBottom>
@@ -67,7 +75,7 @@ const ProductComponent =() => {
             <CardMedia
               component="img"
               alt={product.title}
-              height="250"
+              height="200"
               image={product.image}
             />
             <ProductCardContent>
@@ -76,7 +84,7 @@ const ProductComponent =() => {
                 Price: ${product.price}
               </Typography>
             </ProductCardContent>
-            <AddToCartButton variant="contained">Add to cart</AddToCartButton>
+            <AddToCartButton onClick={() => handleAdd(product)} variant="contained">Add to cart</AddToCartButton>
           </ProductCard>
         ))}
       </ProductList>
